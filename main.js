@@ -1,46 +1,37 @@
 let todoArray = [];
-let text = document.getElementById("text");
+//textinput
+const text = document.getElementById("text");
+//button to add text
 const addTaskButton = document.getElementById("add-task-btn");
+//button to save task
 const saveTaskButton = document.getElementById("save-todo-btn");
+
 const listBox = document.getElementById("listBox");
 const saveInd = document.getElementById("saveIndex");
 
-// Challenge: Try and using your addTaskButton with a "keydown" eventlistener
-// and create a way to use the enter key to submit a new list item.
+
 
 addTaskButton.addEventListener("click", (e) => {
-  e.preventDefault(); // This prevents the page from reloading.
-  // start by setting a variable named todo to equal localstorage.getitem("todo")
-  // Add code below this line
+  e.preventDefault();
     let todo = localStorage.getItem("todo");
-  // check if todo is null, if it is set todoArray = []
-  // else set todoArray to JSON.parse() your variable passed into the parse method.
     if (todo === null) {
         todoArray = [];
     } else {
         todoArray = JSON.parse(todo)
     }
-  // check if text.value is empty, alert that the input is empty and return
-    if (text.value === '') {
+
+    if (todo = '') {
         alert('Input is empty')
         return;
     }
-  // now that you've parsed the value, push the text.value to the todoArray.
-  // set the text.value to an empty string.
-  // get the localstorage method and use the setItem and pass in todo
-  // and pass in JSON.stringify(todoArray).
-  // lastly call display todo method
-  todoArray.push(text.value);
-  text.value = '';
+  
+  todoArray.push(todo.value);
+  todo.value = '';
   localStorage.setItem(todoArray, todo);
   JSON.stringify(todoArray);
   displayTodo();
 });
 
-// Add code below this comment to do the following:
-// 1. when the page loads, call displayTodo() method
-displayTodo();
-// This method is already in place for you.
 function displayTodo() {
   let todo = localStorage.getItem("todo");
   if (todo === null) {
